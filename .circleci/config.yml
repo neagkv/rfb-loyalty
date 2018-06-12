@@ -18,7 +18,8 @@ jobs:
 
     environment:
       # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
+      JAVA_TOOL_OPTIONS: "-Xms512m -Xmx1024m"
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
       TERM: dumb
 
     steps:
@@ -60,6 +61,6 @@ jobs:
           name: install yarn
           command: sudo npm install -g yarn
 
-      - run:
-          name: Build Docker Image
-          command: ./gradlew bootRepackage -Pprod pushDockerLatest pushDockerVersionTag -x test
+      # run tests and package
+      - run: ./gradlew clean test --no-daemon --max-workers 1
+
