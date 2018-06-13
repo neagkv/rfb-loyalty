@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "rfb_location")
-public class gitRfbLocation implements Serializable {
+public class RfbLocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
