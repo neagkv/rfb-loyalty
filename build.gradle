@@ -101,6 +101,10 @@ test {
     // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
     // ignoreFailures true
     reports.html.enabled = false
+
+    //set up heap size for JVM
+    minHeapSize = "128"
+    maxHeapSize = "512"
 }
 
 task testReport(type: TestReport) {
