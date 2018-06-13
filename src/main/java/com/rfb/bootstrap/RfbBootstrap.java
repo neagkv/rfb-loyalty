@@ -50,7 +50,7 @@ public class RfbBootstrap implements CommandLineRunner {
         rfbUser.setUsername("Johnny");
         rfbUserRepository.save(rfbUser);
 
-        //load data
+
         RfbLocation aleAndWitch = getRfbLocation("St Pete - Ale and the Witch", DayOfWeek.MONDAY.getValue());
 
         rfbUser.setHomeLocation(aleAndWitch);
@@ -78,6 +78,10 @@ public class RfbBootstrap implements CommandLineRunner {
 
         getRfbEventAttendance(rfbUser, yardOfAleEvent);
 
+        RfbLocation pourHouse = getRfbLocation("Tampa - Pour House", DayOfWeek.MONDAY.getValue());
+        RfbLocation macDintons = getRfbLocation("Tampa - Mac Dintons", DayOfWeek.TUESDAY.getValue());
+
+        RfbLocation satRun = getRfbLocation("Saturday Run for testing", DayOfWeek.SATURDAY.getValue());
     }
 
 
