@@ -102,9 +102,9 @@ test {
     // ignoreFailures true
     reports.html.enabled = false
 
-    //set up heap size for JVM
-    minHeapSize = "128"
-    maxHeapSize = "512"
+//    //set up heap size for JVM
+//    minHeapSize = "128"
+//    maxHeapSize = "512"
 }
 
 task testReport(type: TestReport) {
