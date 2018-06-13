@@ -10,7 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "regionName",
+            "fieldName": "locationName",
             "fieldType": "String"
         },
         {

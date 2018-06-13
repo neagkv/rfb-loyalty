@@ -25,10 +25,12 @@
             <column name="attendance_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="rfb_user_id" type="bigint">
-                <constraints unique="true" nullable="true" />
-            </column>
+
             <column name="rfb_event_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="rfb_user_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

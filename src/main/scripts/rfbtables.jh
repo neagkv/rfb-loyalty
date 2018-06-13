@@ -1,31 +1,29 @@
 
 entity RfbLocation {
-	regionName String,
+    locationName String,
     runDayOfWeek Integer
 }
 
-entity RfbEventAttendance {
-	attendanceDate LocalDate
-}
-
 entity RfbEvent {
-	eventDate LocalDate,
+    eventDate LocalDate,
     eventCode String
 }
 
-entity RfbUser {
+entity RfbEventAttendance {
+    attendanceDate LocalDate
+}
 
+entity RfbUser {
     username String
 }
 
 relationship OneToMany {
-
     RfbLocation{rvbEvent} to RfbEvent,
-    RfbEvent{rfbEventAttendance} to RfbEventAttendance
+    RfbEvent{rfbEventAttendance} to RfbEventAttendance,
+    RfbUser{rfbEventAttendance} to RfbEventAttendance
 }
 
 relationship OneToOne {
-	RfbEventAttendance{rfbUser} to RfbUser,
     RfbUser{homeLocation} to RfbLocation
 }
 
@@ -34,5 +32,4 @@ dto * with mapstruct
 service all with serviceImpl
 
 paginate RfbLocation, RfbEvent with pagination
-
 paginate RfbEventAttendance with infinite-scroll

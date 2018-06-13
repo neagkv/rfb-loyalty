@@ -9,8 +9,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { RfbEventAttendance } from './rfb-event-attendance.model';
 import { RfbEventAttendancePopupService } from './rfb-event-attendance-popup.service';
 import { RfbEventAttendanceService } from './rfb-event-attendance.service';
-import { RfbUser, RfbUserService } from '../rfb-user';
 import { RfbEvent, RfbEventService } from '../rfb-event';
+import { RfbUser, RfbUserService } from '../rfb-user';
 
 @Component({
     selector: 'jhi-rfb-event-attendance-dialog',
@@ -21,38 +21,27 @@ export class RfbEventAttendanceDialogComponent implements OnInit {
     rfbEventAttendance: RfbEventAttendance;
     isSaving: boolean;
 
-    rfbusers: RfbUser[];
-
     rfbevents: RfbEvent[];
+
+    rfbusers: RfbUser[];
     attendanceDateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private rfbEventAttendanceService: RfbEventAttendanceService,
-        private rfbUserService: RfbUserService,
         private rfbEventService: RfbEventService,
+        private rfbUserService: RfbUserService,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
         this.isSaving = false;
-        this.rfbUserService
-            .query({filter: 'rfbeventattendance-is-null'})
-            .subscribe((res: HttpResponse<RfbUser[]>) => {
-                if (!this.rfbEventAttendance.rfbUserId) {
-                    this.rfbusers = res.body;
-                } else {
-                    this.rfbUserService
-                        .find(this.rfbEventAttendance.rfbUserId)
-                        .subscribe((subRes: HttpResponse<RfbUser>) => {
-                            this.rfbusers = [subRes.body].concat(res.body);
-                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
-                }
-            }, (res: HttpErrorResponse) => this.onError(res.message));
         this.rfbEventService.query()
             .subscribe((res: HttpResponse<RfbEvent[]>) => { this.rfbevents = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.rfbUserService.query()
+            .subscribe((res: HttpResponse<RfbUser[]>) => { this.rfbusers = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -89,11 +78,11 @@ export class RfbEventAttendanceDialogComponent implements OnInit {
         this.jhiAlertService.error(error.message, null, null);
     }
 
-    trackRfbUserById(index: number, item: RfbUser) {
+    trackRfbEventById(index: number, item: RfbEvent) {
         return item.id;
     }
 
-    trackRfbEventById(index: number, item: RfbEvent) {
+    trackRfbUserById(index: number, item: RfbUser) {
         return item.id;
     }
 }

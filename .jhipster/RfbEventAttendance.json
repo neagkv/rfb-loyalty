@@ -2,16 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "relationshipName": "rfbUser",
-            "otherEntityName": "rfbUser",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "rfbEventAttendance"
-        },
-        {
             "relationshipName": "rfbEvent",
             "otherEntityName": "rfbEvent",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "rfbUser",
+            "otherEntityName": "rfbUser",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }

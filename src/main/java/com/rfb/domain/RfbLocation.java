@@ -22,8 +22,8 @@ public class RfbLocation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "region_name")
-    private String regionName;
+    @Column(name = "location_name")
+    private String locationName;
 
     @Column(name = "run_day_of_week")
     private Integer runDayOfWeek;
@@ -41,17 +41,17 @@ public class RfbLocation implements Serializable {
         this.id = id;
     }
 
-    public String getRegionName() {
-        return regionName;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public RfbLocation regionName(String regionName) {
-        this.regionName = regionName;
+    public RfbLocation locationName(String locationName) {
+        this.locationName = locationName;
         return this;
     }
 
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public Integer getRunDayOfWeek() {
@@ -117,7 +117,7 @@ public class RfbLocation implements Serializable {
     public String toString() {
         return "RfbLocation{" +
             "id=" + getId() +
-            ", regionName='" + getRegionName() + "'" +
+            ", locationName='" + getLocationName() + "'" +
             ", runDayOfWeek=" + getRunDayOfWeek() +
             "}";
     }

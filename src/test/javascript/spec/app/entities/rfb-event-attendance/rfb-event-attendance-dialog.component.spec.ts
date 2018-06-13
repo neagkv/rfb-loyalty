@@ -9,8 +9,8 @@ import { RfbloyaltyTestModule } from '../../../test.module';
 import { RfbEventAttendanceDialogComponent } from '../../../../../../main/webapp/app/entities/rfb-event-attendance/rfb-event-attendance-dialog.component';
 import { RfbEventAttendanceService } from '../../../../../../main/webapp/app/entities/rfb-event-attendance/rfb-event-attendance.service';
 import { RfbEventAttendance } from '../../../../../../main/webapp/app/entities/rfb-event-attendance/rfb-event-attendance.model';
-import { RfbUserService } from '../../../../../../main/webapp/app/entities/rfb-user';
 import { RfbEventService } from '../../../../../../main/webapp/app/entities/rfb-event';
+import { RfbUserService } from '../../../../../../main/webapp/app/entities/rfb-user';
 
 describe('Component Tests', () => {
 
@@ -26,8 +26,8 @@ describe('Component Tests', () => {
                 imports: [RfbloyaltyTestModule],
                 declarations: [RfbEventAttendanceDialogComponent],
                 providers: [
-                    RfbUserService,
                     RfbEventService,
+                    RfbUserService,
                     RfbEventAttendanceService
                 ]
             })
