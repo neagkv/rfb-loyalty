@@ -1,6 +1,5 @@
 package com.rfb.bootstrap;
 
-
 import com.rfb.domain.RfbEvent;
 import com.rfb.domain.RfbEventAttendance;
 import com.rfb.domain.RfbLocation;
@@ -11,11 +10,12 @@ import com.rfb.repository.RfbLocationRepository;
 import com.rfb.repository.RfbUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.UUID;
+
 
 @Component
 public class RfbBootstrap implements CommandLineRunner {
@@ -32,13 +32,12 @@ public class RfbBootstrap implements CommandLineRunner {
         this.rfbEventAttendanceRepository = rfbEventAttendanceRepository;
         this.rfbUserRepository = rfbUserRepository;
     }
-
     @Transactional
     @Override
     public void run(String... strings) throws Exception {
 
         // init RFB Locations
-        if (rfbLocationRepository.count() == 0) {
+        if(rfbLocationRepository.count() == 0){
             //only load data if no data loaded
             initData();
         }
@@ -50,7 +49,7 @@ public class RfbBootstrap implements CommandLineRunner {
         rfbUser.setUsername("Johnny");
         rfbUserRepository.save(rfbUser);
 
-
+        //load data
         RfbLocation aleAndWitch = getRfbLocation("St Pete - Ale and the Witch", DayOfWeek.MONDAY.getValue());
 
         rfbUser.setHomeLocation(aleAndWitch);

@@ -5,7 +5,7 @@ export class RfbLocation implements BaseEntity {
         public id?: number,
         public locationName?: string,
         public runDayOfWeek?: number,
-        public rvbEvents?: BaseEntity[],
+        public rfbEvents?: BaseEntity[],
     ) {
     }
 }
